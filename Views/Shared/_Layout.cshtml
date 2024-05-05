@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mon application ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/mydesign/MainDesign.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="container">
+        <ul id="menu">
+            <li>
+                <a href="/Home/Index">School</a>
+                
+            </li>
+            <li>
+                <a href="/Teacher/Index">Teachers</a>
+                <ul>
+                    <li><a href="/Teacher/InsertTeacher">add new teacher</a></li>
+                  
+                </ul>
+            </li>
+            <li>
+                <a href="/Student/Index">Students</a>
+                <ul>
+                    <li><a href="/Student/InsertStudent">Add New Student</a></li>
+                   
+                </ul>
+            </li>
+            <li>
+                <a href="/Room/Index">Rooms</a>
+                <ul>
+                    <li><a href="/Room/InsertRoom">add new room</a></li>
+                    
+                </ul>
+            </li>
+            <li>
+                <a href="/Course/Index">Courses</a>
+                <ul>
+                    <li><a href="/Course/InsertCourse">Insert new course</a></li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Welcome To school </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

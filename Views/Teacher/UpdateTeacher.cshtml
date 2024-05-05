@@ -1,0 +1,18 @@
+﻿@model School.Models.Teacher
+
+@using (Html.BeginForm("SaveTeacher", "Teacher", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.teacherID)
+
+    <label for="teacherName">Teacher name:</label>
+    <br />
+    @Html.TextBoxFor(model => model.teacherName)
+    <br />
+
+    <label for="teacherNo">Teacher Number:</label>
+    <br />
+    @Html.TextBoxFor(model => model.teacherNo)
+    <br />
+
+    <input type="submit" value="Update Teacher" />
+}

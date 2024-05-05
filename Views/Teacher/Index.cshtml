@@ -1,0 +1,25 @@
+﻿@model List<School.Models.Teacher> 
+<table cellpadding="0" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Teacher Name</th>
+            <th>Teacher Number</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var teacher in Model)
+        {
+        <tr>
+            <td valign="middle" data-header-title="Date"><span>@teacher.teacherID</span></td>
+            <td valign="middle" data-header-title="Price">@teacher.teacherName</td>
+            <td valign="middle" data-header-title="Supplement">@teacher.teacherNo</td>
+            <td><a href="/Teacher/DeleteTeacher/@teacher.teacherID">Delete</a></td>
+            <td><a href="/Teacher/UpdateTeacher/@teacher.teacherID">Update</a></td>
+        </tr>
+        }
+
+    </tbody>
+</table>
