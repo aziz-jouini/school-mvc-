@@ -12,5 +12,6 @@ namespace School.Models
         public int courseID { get; set; }
         public string courseName { get; set; }
         public bool isAvaible { get; set; }
+        public ICollection<Formation> Formations { get; set; }   
     }
 }

@@ -21,5 +21,7 @@ namespace ABC__university.Models
         public DbSet<Student> students { get; set; }
         public DbSet<Course> Courses { get; set; }
 
+        public DbSet<Formation> Formations { get; set; }
+
     }
 }

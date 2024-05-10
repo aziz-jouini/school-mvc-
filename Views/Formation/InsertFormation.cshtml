@@ -1,0 +1,29 @@
+﻿@model School.Models.Formation
+
+@using (Html.BeginForm("SaveFormation", "Formation", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.formationID)
+
+    <label for="FormationName">Formation name:</label>
+    <br />
+    @Html.TextBoxFor(model => model.formationName)
+    <br />
+    <label for="FormatioTime">Formation time:</label>
+    <br />
+    @Html.TextBoxFor(model => model.time)
+    <br />
+
+    <label for="IsAvaible">IsAvaible:</label>
+    <br />
+    @Html.TextBoxFor(model => model.isAvaible)
+    <br />
+    <label for="IsAvaible">CourseID:</label>
+    <br />
+    @Html.TextBoxFor(model => model.CourseID)
+    <br />
+
+
+
+    <input type="submit" value="Update Formation" />
+}
+

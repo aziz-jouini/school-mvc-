@@ -99,3 +99,4 @@ C:\Users\Aziz\Desktop\School\obj\Debug\School.dll
 C:\Users\Aziz\Desktop\School\obj\Debug\School.pdb
 C:\Users\Aziz\Desktop\School\obj\Debug\School.Migrations.init.resources
 C:\Users\Aziz\Desktop\School\obj\Debug\School.csproj.GenerateResource.cache
+C:\Users\Aziz\Desktop\School\obj\Debug\School.Migrations.AddFormationCourseRelationship.resources

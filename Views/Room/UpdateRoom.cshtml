@@ -1,0 +1,28 @@
+﻿@model School.Models.Room
+
+@using (Html.BeginForm("SaveRoom", "Room", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.roomID)
+
+    <label for="RoomName">Room name:</label>
+    <br />
+    @Html.TextBoxFor(model => model.roomName)
+    <br />
+
+    <label for="RoomNo">Room Size:</label>
+    <br />
+    @Html.TextBoxFor(model => model.roomSize)
+    <br />
+
+    <label for="IsAvaible">isAvaible</label>
+    <br />
+    @Html.TextBoxFor(model => model.isAvaible)
+    <br />
+    <label for="Location">Location</label>
+    <br />
+    @Html.TextBoxFor(model => model.location)
+    <br />
+
+    <input type="submit" value="Update Room" />
+}
+

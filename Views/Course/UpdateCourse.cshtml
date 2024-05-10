@@ -1,0 +1,22 @@
+﻿@model School.Models.Course
+
+@using (Html.BeginForm("SaveCourse", "Course", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.courseID)
+
+    <label for="CourseName">Course name:</label>
+    <br />
+    @Html.TextBoxFor(model => model.courseName)
+    <br />
+
+    <label for="CourseNo">isAavible :</label>
+    <br />
+    @Html.TextBoxFor(model => model.isAvaible)
+    <br />
+
+    
+
+    <input type="submit" value="Update Course" />
+}
+
+

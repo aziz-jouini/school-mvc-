@@ -12,56 +12,60 @@ namespace School.Controllers
 
     {
         SchoolContext myDB = new SchoolContext();
-        // GET: Room
         public ActionResult Index()
         {
-            List<Room> roomLst = new List<Room>();
-            roomLst = (from room in myDB.rooms
-                       select room).ToList();
-            return View();
+            List<Room> RoomLst = new List<Room>();
+            RoomLst = (from Room in myDB.rooms
+                          select Room).ToList();
+            return View(RoomLst);
         }
-        public ActionResult GetDetails(int roomId)
-        {
-            Room obj = new Room();
-            obj = (from room in myDB.rooms
-                   where room.roomID == roomId
-                   select room).FirstOrDefault();
-            return View("RoomDetails");
 
+        [HttpGet]
+        public ActionResult InsertRoom()
+        {
+            return View();
+
+        }
+        [HttpPost]
+        public ActionResult InsertRoom(Room Room)
+        {
+            myDB.rooms.Add(Room);
+            myDB.SaveChanges();
+
+            return RedirectToAction("Index"); // Rediriger vers une autre action après avoir ajouté l'enseignant avec succès
         }
         public ActionResult DeleteRoom(int id)
         {
             Room obj = new Room();
-            obj = (from room in myDB.rooms
-                   where room.roomID == id
-                   select room).FirstOrDefault();
+            obj = (from Room in myDB.rooms
+                   where Room.roomID == id
+                   select Room).FirstOrDefault();
             myDB.rooms.Remove(obj);
             myDB.SaveChanges();
-            return View("Index");
+            return RedirectToAction("Index");
 
         }
-        public ActionResult UpdateRoom(int roomId )
+        public ActionResult UpdateRoom(int id)
         {
-           Room obj = new Room();
-            obj = (from room in myDB.rooms
-                   where room.roomID == roomId
-                   select room).FirstOrDefault();
-
-            obj.roomName = "new room Name";
-
-            myDB.SaveChanges();
-            return View("index");
+            Room Room = myDB.rooms.FirstOrDefault(t => t.roomID == id);
+            if (Room == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Room);
         }
-        public ActionResult InsertRoom()
+        [HttpPost]
+        public ActionResult SaveRoom(Room Room)
         {
-            Room obj = new Room();
-            obj.isAvaible = true;
-            obj.location = "tunis";
-            obj.roomSize = 10;
-
-            myDB.rooms.Add(obj);
-            myDB.SaveChanges();
-            return View("index");
+            var existingRoom = myDB.rooms.FirstOrDefault(t => t.roomID == Room.roomID);
+            if (existingRoom != null)
+            {
+                existingRoom.roomName = Room.roomName;
+                existingRoom.roomSize = Room.roomSize;
+                myDB.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
+
     }
 }

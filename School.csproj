@@ -141,6 +141,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\FormationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -152,8 +153,13 @@
     <Compile Include="Migrations\202405042010237_init.designer.cs">
       <DependentUpon>202405042010237_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202405100051233_AddFormationCourseRelationship.cs" />
+    <Compile Include="Migrations\202405100051233_AddFormationCourseRelationship.designer.cs">
+      <DependentUpon>202405100051233_AddFormationCourseRelationship.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Formation.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\SchoolContext.cs" />
     <Compile Include="Models\Student.cs" />
@@ -212,16 +218,24 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Course\courses.cshtml" />
     <Content Include="Views\Room\Index.cshtml" />
-    <Content Include="Views\Room\RoomDetails.cshtml" />
     <Content Include="Views\Teacher\Index.cshtml" />
     <Content Include="Views\Teacher\InsertTeacher.cshtml" />
     <Content Include="Views\Teacher\UpdateTeacher.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\InsertStudent.cshtml" />
+    <Content Include="Views\Student\UpdateStudent.cshtml" />
+    <Content Include="Views\Room\InsertRoom.cshtml" />
+    <Content Include="Views\Room\UpdateRoom.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Course\InsertCourse.cshtml" />
+    <Content Include="Views\Course\UpdateCourse.cshtml" />
+    <Content Include="Views\Formation\Index.cshtml" />
+    <Content Include="Views\Formation\UpdateFormation.cshtml" />
+    <Content Include="Views\Formation\InsertFormation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Student\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -253,6 +267,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202405042010237_init.resx">
       <DependentUpon>202405042010237_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202405100051233_AddFormationCourseRelationship.resx">
+      <DependentUpon>202405100051233_AddFormationCourseRelationship.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

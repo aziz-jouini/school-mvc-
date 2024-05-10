@@ -12,60 +12,62 @@ namespace school.Controllers
 {
     public class CourseController : Controller
     {
+
         SchoolContext myDB = new SchoolContext();
-        public ActionResult GetCourses()
+        public ActionResult Index()
         {
-            List<Course> courseLst = new List<Course>();
-            courseLst = (from obj in myDB.Courses
-                         select obj).ToList();
-
-            return View("courses");
-
+            List<Course> CourseLst = new List<Course>();
+            CourseLst = (from Course in myDB.Courses
+                          select Course).ToList();
+            return View(CourseLst);
         }
-        public ActionResult GetCourse(int id)
-        {
-            Course obj = new Course();
-            obj = (from xyz in myDB.Courses
-                   where xyz.courseID == id
-                   select xyz).FirstOrDefault();
-            return View("courses");
 
-        }
+        [HttpGet]
         public ActionResult InsertCourse()
         {
-            Course obj = new Course();
-            obj.courseName = "test";
-            obj.isAvaible = true;
+            return View();
 
-            myDB.Courses.Add(obj);
+        }
+        [HttpPost]
+        public ActionResult InsertCourse(Course Course)
+        {
+            myDB.Courses.Add(Course);
             myDB.SaveChanges();
-            return View("courses");
+
+            return RedirectToAction("Index"); 
         }
         public ActionResult DeleteCourse(int id)
         {
             Course obj = new Course();
-            obj = (from course in myDB.Courses
-                 where course.courseID == id
-                 select course).FirstOrDefault();
-
+            obj = (from Course in myDB.Courses
+                   where Course.courseID == id
+                   select Course).FirstOrDefault();
             myDB.Courses.Remove(obj);
             myDB.SaveChanges();
-            return View("courses");
+            return RedirectToAction("Index");
+
         }
         public ActionResult UpdateCourse(int id)
         {
-            Course obj = new Course();
-            obj = (from course in myDB.Courses
-                   where course.courseID == id
-                   select course).FirstOrDefault();
-
-            obj.courseName = "test2";
-            obj.isAvaible = false;
-            myDB.SaveChanges();
-            return View("courses");
+            Course Course = myDB.Courses.FirstOrDefault(t => t.courseID == id);
+            if (Course == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Course);
         }
-       
-
+        [HttpPost]
+        public ActionResult SaveCourse(Course Course)
+        {
+            var existingCourse = myDB.Courses.FirstOrDefault(t => t.courseID == Course.courseID);
+            if (existingCourse != null)
+            {
+                existingCourse.courseName = Course.courseName;
+                existingCourse.isAvaible = Course.isAvaible;
+                myDB.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
 
 
     }

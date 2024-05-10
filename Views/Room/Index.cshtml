@@ -1,7 +1,29 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿@model List<School.Models.Room>
+<table cellpadding="0" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Room Name</th>
+            <th>Room Size</th>
+            <th>isAvaible</th>
+            <th>location</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Room in Model)
+        {
+            <tr>
+                <td valign="middle" data-header-title="Date"><span>@Room.roomID</span></td>
+                <td valign="middle" data-header-title="Price">@Room.roomName</td>
+                <td valign="middle" data-header-title="Supplement">@Room.roomSize</td>
+                <td valign="middle" data-header-title="Supplement">@Room.isAvaible</td>
+                <td valign="middle" data-header-title="Supplement">@Room.location</td>
+                <td><a href="/Room/DeleteRoom/@Room.roomID">Delete</a></td>
+                <td><a href="/Room/UpdateRoom/@Room.roomID">Update</a></td>
+            </tr>
+        }
 
-<h2>Index</h2>
-
+    </tbody>
+</table> 

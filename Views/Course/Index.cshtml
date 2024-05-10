@@ -1,0 +1,28 @@
+﻿model List<School.Models.Course>
+    <table cellpadding="0" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Course Name</th>
+                
+                <th>isAvaible</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Course in Model)
+            {
+                <tr>
+                    <td valign="middle" data-header-title="Date"><span>@Course.courseID</span></td>
+                    <td valign="middle" data-header-title="Price">@Course.courseName</td>
+
+                    <td valign="middle" data-header-title="Supplement">@Course.isAvaible</td>
+                    <td><a href="/Course/DeleteCourse/@Course.courseID">Delete</a></td>
+                    <td><a href="/Course/UpdateCourse/@Course.courseID">Update</a></td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
